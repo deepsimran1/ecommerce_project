@@ -9,6 +9,7 @@ form a{
     text-decoration: none;
 } */
 
+
 .size-login{
   width: 500px !important;
 }
@@ -60,11 +61,11 @@ img{
   .modal-dialog{
     width: 400px !important;
   }
-
+/* 
   .modal-img{
     width: 100%;
     height: 300px;
-  }
+  } */
   .view-img{
     border-radius: 0px !important;
   }
@@ -304,3 +305,13 @@ img{
   z-index:99;
 
 } */
+
+.design{
+  border: 1px solid lavender !important;
+}
+
+.design-2{
+  border: 1px solid lavender !important;
+  margin: 1px;
+  border-radius: 0.5rem;
+}

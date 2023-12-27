@@ -126,10 +126,17 @@ const AdminProducts = () => {
                         className="img-fluid lg-small-img"
                       />
                     </div>
-                    <div className="modal-details">
-                      <p>Name: {selectedProduct.name}</p>
-                      <p>Price: ${selectedProduct.price}</p>
-                      <p>Description: {selectedProduct.description}</p>
+                    <div className="modal-details m-auto">
+                      <p className="name">{selectedProduct.name}</p>
+                    
+                      {selectedProduct.description
+                        .split(",")
+                        .map((part, index) => (
+                          <p key={index} style={{ margin: "0px" }}>
+                            {part}
+                          </p>
+                        ))}
+                          <p className="name mt-2">${selectedProduct.price}</p>
                     </div>
                   </div>
                 )}

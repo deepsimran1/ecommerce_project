@@ -9,7 +9,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBox } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-
+import './admin.css';
 const AdminHome = () => {
   const [adminName, setAdminName] = useState("");
   const [totalProducts, setTotalProducts] = useState(0);
@@ -70,7 +70,7 @@ const AdminHome = () => {
           <div className="row d-flex justify-content-center align-items-center mt-0">
             <div className="col-lg-4 col-md-12  col-sm-12 p-2 mb-4 ">
               <div className="card shadow p-3 ">
-              <h4>Welcome, {adminName}</h4>
+              <h4 className="tesh">Welcome, {adminName}</h4>
               <p>All systems are running smoothly! </p>
               <button className="btn btn-info text-white m-1 col-5">View Sales</button>
               </div>

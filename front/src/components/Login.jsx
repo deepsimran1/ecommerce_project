@@ -4,7 +4,7 @@ import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 const Login = () => {
 
   const validationSchema = Yup.object().shape({
@@ -46,13 +46,16 @@ const Login = () => {
       <div className="container d-flex justify-content-center p-5 ">
         <div className="card p-5 size-login shadow">
           <form className="row g-3" onSubmit={formik.handleSubmit}>
-            <div className="col-12">
-              <label className="form-label">Email</label>
-              <input type="email" className="form-control" name="email" onChange={formik.handleChange} onBlur={formik.handleBlur} placeholder="example@gmail.com" />
-              {formik.touched.email && formik.errors.email && (
-                <div className="text-danger">{formik.errors.email}</div>
-              )}
+          <div className="col-12">
+              <div className="form-outline">
+                <input type="email" className="form-control form-control-lg" id="email" name="email" onChange={formik.handleChange} onBlur={formik.handleBlur} placeholder="example@gmail.com" /> {/* No border class removed */}
+                <label className="form-label" for="email">Email</label>
+                {formik.touched.email && formik.errors.email && (
+                  <div className="text-danger">{formik.errors.email}</div>
+                )}
+              </div>
             </div>
+
             <div className="col-12">
               <label className="form-label">Password</label>
               <input type="password" className="form-control" name="password" onChange={formik.handleChange} onBlur={formik.handleBlur} placeholder="password" />

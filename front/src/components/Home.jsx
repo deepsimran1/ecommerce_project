@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Slider from "react-slick";
-import './login.css';
+import "./login.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Img1 from "./sliderImages/img1.jpg";
@@ -30,11 +30,11 @@ export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [wishlist, setWishlist] = useState({ products: [] });
   const [cart, setCart] = useState({ products: [] });
-  const [selectedSize,setSelectedSize] = useState();
-  const [sizeNotSelected, setSizeNotSelected] = useState(false); 
+  const [selectedSize, setSelectedSize] = useState();
+  const [sizeNotSelected, setSizeNotSelected] = useState(false);
   const [previousSelectedSize, setPreviousSelectedSize] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totoalpage, setTotoalpage] = useState('');
+  const [totoalpage, setTotoalpage] = useState("");
   const navigate = useNavigate();
 
   const { searchTerm } = useSearch();
@@ -59,10 +59,14 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    
     axios
-      .get(`http://localhost:4000/users/product?search=${searchTerm}&page=${currentPage}&limit=12`)
-      .then((response) => {setTotoalpage(response.data.count) ;setProducts(response.data.products)})
+      .get(
+        `http://localhost:4000/users/product?search=${searchTerm}&page=${currentPage}&limit=12`
+      )
+      .then((response) => {
+        setTotoalpage(response.data.count);
+        setProducts(response.data.products);
+      })
       .catch((error) => console.error("Error fetching products:", error));
 
     const storedWishlist = localStorage.getItem("wishlist");
@@ -82,9 +86,9 @@ export default function Home() {
         setPreviousSelectedSize(storedPreviousSize);
       }
     }
-  }, [searchTerm,showModal,selectedProduct,currentPage]);
+  }, [searchTerm, showModal, selectedProduct, currentPage]);
 
-  const handleAddToCart = async (productId,selectedSize) => {
+  const handleAddToCart = async (productId, selectedSize) => {
     try {
       if (!selectedSize) {
         // Size not selected, display a modal
@@ -94,15 +98,15 @@ export default function Home() {
 
       const token = localStorage.getItem("token");
       if (!token) {
-        alert('Please login first..🙂')
-        navigate('/login');
+        alert("Please login first..🙂");
+        navigate("/login");
       }
       const response = await axios.post(
         `http://localhost:4000/users/addToCart`,
         {
           productId,
           quantity: 1,
-          size:selectedSize,
+          size: selectedSize,
         },
         {
           headers: {
@@ -110,23 +114,22 @@ export default function Home() {
           },
         }
       );
-      if (response.status === 201 || response.status ===204
-        ||response.status===400
-        ) {
-          const updatedCart = await axios.get(
-            "http://localhost:4000/users/getCart",
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-          localStorage.setItem(
-            "cart",
-            JSON.stringify(updatedCart.data?.data)
-          );
-          setCart(updatedCart.data?.data);
-          localStorage.setItem(`previousSelectedSize_${productId}`, selectedSize);
+      if (
+        response.status === 201 ||
+        response.status === 204 ||
+        response.status === 400
+      ) {
+        const updatedCart = await axios.get(
+          "http://localhost:4000/users/getCart",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        localStorage.setItem("cart", JSON.stringify(updatedCart.data?.data));
+        setCart(updatedCart.data?.data);
+        localStorage.setItem(`previousSelectedSize_${productId}`, selectedSize);
         console.log("Product added to cart successfully");
         navigate("/cart");
       } else {
@@ -153,13 +156,12 @@ export default function Home() {
     closeModal();
   };
 
-
   const handleAddToWishlist = async (productId) => {
     try {
       const token = localStorage.getItem("token");
       if (!token) {
-        alert('Please login first..🙂')
-        navigate('/login');
+        alert("Please login first..🙂");
+        navigate("/login");
       }
       const response = await axios.post(
         `http://localhost:4000/users/addToWishlist`,
@@ -219,22 +221,22 @@ export default function Home() {
   return (
     <>
       <div>
-      <div style={{ position: "relative" }} >
-        <Slider {...settings}>
-          <div>
-            <img src={Img1} alt="Img1" />
-          </div>
-          <div>
-            <img src={Img2} alt="Img2" />
-          </div>
-          <div>
-            <img src={Img3} alt="Img3" />
-          </div>
-          <div>
-            <img src={Img4} alt="Img4" />
-          </div>
-        </Slider>
-      </div>
+        <div style={{ position: "relative" }}>
+          <Slider {...settings}>
+            <div>
+              <img src={Img1} alt="Img1" />
+            </div>
+            <div>
+              <img src={Img2} alt="Img2" />
+            </div>
+            <div>
+              <img src={Img3} alt="Img3" />
+            </div>
+            <div>
+              <img src={Img4} alt="Img4" />
+            </div>
+          </Slider>
+        </div>
       </div>
 
       <div className="container-fluid mt-5">
@@ -280,7 +282,7 @@ export default function Home() {
                 <div className="detail">
                   <p>{product?.name}</p>
                   <p>${product?.price}</p>
-                                </div>
+                </div>
               </div>
             </div>
           ))}
@@ -297,13 +299,14 @@ export default function Home() {
               role="dialog"
               style={{ display: "block" }}
             >
-              <div className="modal-dialog" role="document">
-                <div className="modal-content">
+              <div className="modal-dialog " role="document">
+                <div className="modal-content design">
+                  <div className="design-2 shadow">
                   <div className="modal-header">
                     <div className="modal-img ma-div">
                       <img
                         src={`http://localhost:4000/${selectedProduct?.image}`}
-                        className="card-img-top"
+                        className="img-fluid"
                         alt={selectedProduct?.name}
                       />
                       <div class="icon ">
@@ -333,25 +336,36 @@ export default function Home() {
                     </div>
                     <div className="modal-details">
                       <p className="name">{selectedProduct.name}</p>
-                      <p>{selectedProduct.description}</p>
-                      <p>${selectedProduct.price}</p>
-                      <select
-  className="form-select"
-  value={selectedSize || previousSelectedSize}
-  onChange={(e) => setSelectedSize(e.target.value)}
->
-  <option value="" className="text-muted">
-    Size
-  </option>
-  {Object.keys(selectedProduct.sizes).map((size) => (
-    selectedProduct.sizes[size] && (
-      <option key={size} value={size} className="text-dark">
-        {size}
-      </option>
-    )
-  ))}
-</select>
+                      {selectedProduct.description
+                        .split(",")
+                        .map((part, index) => (
+                          <p key={index} style={{ margin: "0px" }}>
+                            {part}
+                          </p>
+                        ))}
 
+                      <p className="name mt-1">${selectedProduct.price}</p>
+                      <select
+                        className="form-select"
+                        value={selectedSize || previousSelectedSize}
+                        onChange={(e) => setSelectedSize(e.target.value)}
+                      >
+                        <option value="" className="text-muted">
+                          Size
+                        </option>
+                        {Object.keys(selectedProduct.sizes).map(
+                          (size) =>
+                            selectedProduct.sizes[size] && (
+                              <option
+                                key={size}
+                                value={size}
+                                className="text-dark"
+                              >
+                                {size}
+                              </option>
+                            )
+                        )}
+                      </select>
 
                       {sizeNotSelected && (
                         <p style={{ color: "red" }}>
@@ -399,20 +413,30 @@ export default function Home() {
                       </>
                     )}
                   </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         )}
 
-<div className=" d-flex justify-content-center align-items-center">
-        <button className="btn btn-primary p-1 m-1" onClick={handlePrevPage} disabled={currentPage === 1}>
-          Prev
-        </button>
-        <button disabled={totoalpage===currentPage} className="btn btn-primary p-1 m-1" onClick={handleNextPage}>Next</button>
-      </div>
+        <div className=" d-flex justify-content-center align-items-center">
+          <button
+            className="btn btn-primary p-1 m-1"
+            onClick={handlePrevPage}
+            disabled={currentPage === 1}
+          >
+            Prev
+          </button>
+          <button
+            disabled={totoalpage === currentPage}
+            className="btn btn-primary p-1 m-1"
+            onClick={handleNextPage}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </>
-
   );
 }

@@ -27,12 +27,12 @@ export default function AdminSidebar() {
               <div>
                 <ul className="list-unstyled fw-normal pb-1 small">
                   <li>
-                    <Link to="/admin/customers" className="link-dark rounded">
+                    <Link to="/admin/customers" className="link-dark rounded ms-4">
                       View Customers
                     </Link>
                   </li>
                   <li>
-                    <Link to="/admin/addCustomer" className="link-dark rounded">
+                    <Link to="/admin/addCustomer" className="link-dark rounded ms-4">
                       Add Customer
                     </Link>
                   </li>
@@ -52,12 +52,12 @@ export default function AdminSidebar() {
             <div className="collapse" id="product-collapse">
               <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li>
-                  <Link to="/admin/products" className="link-dark rounded">
+                  <Link to="/admin/products" className="link-dark rounded ms-4">
                     View Products
                   </Link>
                 </li>
                 <li>
-                  <Link to="/admin/addproduct" className="link-dark rounded">
+                  <Link to="/admin/addproduct" className="link-dark rounded ms-4">
                     Add Products
                   </Link>
                 </li>
@@ -76,25 +76,25 @@ export default function AdminSidebar() {
             <div className="collapse" id="content-collapse">
               <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li>
-                  <Link to="/admin/policy" className="link-dark rounded">
+                  <Link to="/admin/policy" className="link-dark rounded ms-4">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
                   <Link
                     to="/admin/termsConditions"
-                    className="link-dark rounded"
+                    className="link-dark rounded ms-4"
                   >
                     Terms & Conditions
                   </Link>
                 </li>
                 <li>
-                  <Link to="/admin/aboutus" className="link-dark rounded">
+                  <Link to="/admin/aboutus" className="link-dark rounded ms-4">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link to="/admin/contactUser" className="link-dark rounded">
+                  <Link to="/admin/contactUser" className="link-dark rounded ms-4">
                     Contact Users
                   </Link>
                 </li>
@@ -114,22 +114,22 @@ export default function AdminSidebar() {
             <div className="collapse" id="blog-collapse">
               <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li>
-                  <Link to="/admin/createBlog" className="link-dark rounded">
+                  <Link to="/admin/createBlog" className="link-dark rounded ms-4">
                     Create Blogs
                   </Link>
                 </li>
                 <li>
-                  <Link to="/admin/adminBlogs" className="link-dark rounded">
+                  <Link to="/admin/adminBlogs" className="link-dark rounded ms-4">
                     Your Blogs
                   </Link>
                 </li>
                 <li>
-                  <Link to="/admin/allBlogs" className="link-dark rounded">
+                  <Link to="/admin/allBlogs" className="link-dark rounded ms-4">
                     All Blogs
                   </Link>
                 </li>
                 <li>
-                  <Link to="/admin/editBlog" className="link-dark rounded">
+                  <Link to="/admin/editBlog" className="link-dark rounded ms-4">
                     Edit Blog
                   </Link>
                 </li>
@@ -149,18 +149,18 @@ export default function AdminSidebar() {
             <div className="collapse" id="account-collapse">
               <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li>
-                  <Link to="/admin/profile" className="link-dark rounded">
+                  <Link to="/admin/profile" className="link-dark rounded ms-4">
                     Profile
                   </Link>
                 </li>
 
                 <li>
-                  <a className="link-dark rounded" onClick={handleSetting}>
+                  <a className="link-dark rounded ms-4" onClick={handleSetting}>
                     Settings
                   </a>
                 </li>
                 <li>
-                  <a className="link-dark rounded" onClick={handleLogout}>
+                  <a className="link-dark rounded ms-4" onClick={handleLogout}>
                     Log out
                   </a>
                 </li>
