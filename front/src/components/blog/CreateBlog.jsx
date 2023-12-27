@@ -61,20 +61,24 @@ const BlogForm = () => {
     <div>
       <h3 className="mb-4">Create Blog</h3>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title:</label>
+        <div className=" mb-3">
+        <label className="text-muted" htmlFor="title">Title:</label>
           <input
+          className="form-control"
+          id="title"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
+           
+        </div>
+        <div className="mb-3">
+        <label className="text-muted mb-1">Image:</label>
+          <input type="file" accept="image/*" onChange={handleImageChange} className="form-control" />
+         
         </div>
         <div>
-          <label>Image:</label>
-          <input type="file" accept="image/*" onChange={handleImageChange} />
-        </div>
-        <div>
-          <label>Blog Content:</label>
+          <label className="text-muted mb-1">Blog Content:</label>
           <CKEditor
             editor={ClassicEditor}
             data={blogContent}
@@ -82,7 +86,7 @@ const BlogForm = () => {
            
           />
         </div>
-        <div>
+        <div className="text-end">
           <button type="submit" className="btn mt-3 btn-primary">
             Submit
           </button>
@@ -98,10 +102,13 @@ function CreateBlog() {
       <AdminNav />
       <div className="contain">
         <AdminSidebar />
-        <div className="main container d-flex justify-content-center align-items-center">
-          <div className="card shadow p-4">
+        <div className="main ">
+          <div className="container d-flex justify-content-center align-items-center">
+          <div className=" col-lg-12 card shadow p-4">
             <BlogForm />
           </div>
+          </div>
+          
         </div>
       </div>
     </div>
