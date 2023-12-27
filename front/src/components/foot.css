@@ -1,0 +1,58 @@
+.logo{
+    font-weight: 600;
+    font-size: 25px;
+}
+.lists li{
+    list-style-type: none;
+
+}
+
+.lists li a{
+    text-decoration: none;
+    color: #6c757d;
+    transition: left 2s ease-out;
+    position: relative;
+    
+}
+.lists li{
+    margin-bottom: 10px;
+}
+
+.lists li a:hover{
+    color:blue;
+    left:10px;
+}
+.foot-p{
+    text-align: justify;
+    line-height: 18px;
+    font-size: 15px;
+    word-break: break-all;
+    word-spacing: 3px;
+}
+.icons{
+    margin-top: 30px;
+}
+.icons a svg{
+    margin-right: 22px;
+    transform: translateY(0);
+    cursor: pointer;
+}
+
+.icons a svg:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 .25rem .75rem rgba(30, 34, 40, .15)
+}
+.link-title{
+    padding-left: 30px;
+    font-size: 19px;
+    font-weight: 450;
+}
+
+.bor{
+    border: 1px solid black;
+}
+.logo-img{
+    height: 35px;
+    width: 100px;
+    margin: 0px !important;
+  }

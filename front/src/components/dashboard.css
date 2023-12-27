@@ -1,0 +1,40 @@
+/* Dashboard.css */
+
+
+
+.dashboard-content {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.dashboard-heading {
+    color: #007bff;
+}
+
+.user-information {
+    margin-top: 20px;
+}
+
+.user-images img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.rig{
+        position: absolute;
+        right: 30px;
+}
+a{
+    text-decoration: none !important;
+    cursor: pointer;
+}
+.btn-save{
+    border-radius: 0px !important;
+}

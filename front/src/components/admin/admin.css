@@ -1,0 +1,253 @@
+
+
+  .admin-img{
+    height: 45px !important;
+    width: 45px !important;
+    background-size: contain;
+    border-radius: 50px;
+    position: relative;
+  }
+::after{
+  padding: 0px !important;
+  margin: 0px !important;
+  color: transparent;
+}
+.contain{
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+.main{
+  width: 80% !important;
+   padding: 50px 0px;
+ }
+ .admin-p-img{
+  height: 110px !important;
+  width: 110px !important;
+  background-size: contain;
+  border-radius: 10px;
+ }
+ .con{
+  border-radius: 10px;
+  border: none !important;
+ }
+ .edit a{
+  color: white !important;
+ }
+ .small-img{
+  width: 150px;
+  height: 150px;
+ }
+.change-color a{
+  color: white!important;
+}
+.edit-display-img{
+  width: 400px;
+  height: 400px;
+}
+.modal-dialog{
+  min-width:600px !important;
+  margin-top:2% !important;
+  margin-bottom: 2% !important;
+}
+.modal-content{
+  width: 500px!important;
+}
+.modal-header{
+  display: flex !important;
+}
+.modal-img{
+  width: 55%;
+}
+.modal-details{
+  width:40%;
+  padding-left:10px
+}
+
+
+
+
+
+.sidebar{
+  width: 20% !important;
+  flex-shrink: 0;
+  border: 1px solid black;
+  height: 100% !important;
+  overflow: auto !important;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+
+.sidebar-item{
+  display: block;
+  border-radius: 5px;
+  transition: background-color .25s;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.sidebar-item:hover{
+  background-color: aqua;
+}
+.sidebar-title{
+  display: flex;
+  font-size: 1.2em;
+  justify-content: space-between;
+}
+.sidebar-title span svg{
+  display: inline-block;
+  width: 1.5em;
+}
+.sidebar-title{
+  cursor: pointer;
+  transition: transform .3s;
+}
+.toggle-btn{
+  cursor: pointer;
+  transition: transform .3s;
+}
+
+.sidebar-item.open .sidebar-title .toggle-btn{
+  transform:rotate(180deg)
+}
+.sidebar-content{
+  padding-top: .25em;
+  height: 0;
+  overflow: hidden;
+}
+.sidebar-item.open .sidebar-content{
+  height: auto;
+}
+
+.customer-icon-color{
+  background-color: greenyellow;
+  width: 40px;
+  padding: 10px;
+  height: 48px;
+  border-radius: 8px;
+}
+.customer-icon-color svg{
+  color: rgb(255, 255, 255) !important;
+}
+.product-icon-color{
+  background-color: orange;
+  width: 40px;
+  padding: 10px;
+  height: 48px;
+  border-radius: 8px;
+}
+.product-icon-color svg{
+  color: rgb(255, 255, 255) !important;
+}
+
+/* body {
+  background-color: #f5f5f5;
+  color: #333;
+} 
+
+
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}  */
+
+.size-login{
+  width: 500px !important;
+}
+.admin-d{
+  font-size: 15px;
+  padding: 0px ;
+  margin: 0px;
+}
+.admin-n{
+  font-weight: 600;
+  margin: 0px !important;
+  padding: 0px !important;
+  color: black !important;
+}
+
+.dropdown-menu a{
+  padding: 3px 12px ;
+  margin: 0px;
+  /* color: rgba(150, 140, 140, 0.5); */
+}
+.dropdown-divider{
+  padding: 0px;
+  margin: 0px;
+  color: rgb(235, 234, 234,.5);
+}
+.dropdown-menu a svg{
+  font-size: 15px;
+ padding: 0px 7px 0px 0px;
+ /* color: rgba(150, 140, 140, 0.5); */
+}
+.dropdown-menu a :hover{
+  color: rgba(150, 140, 140) !important;
+}
+.nav-item{
+  margin: auto 0px ;
+  padding:0px !important;
+}
+.notification-bell{
+  
+  height: 25px !important;
+  width: 25px !important;
+  background-size: contain;
+  border-radius: 50px;
+  position: relative;
+  color: rgb(48, 47, 47);
+  position: relative;
+
+}
+.notification-badge {
+  background-color:rgb(109, 235, 92);
+  color: white;
+  border-radius: 50%;
+  padding: .5px 6px;
+  position: absolute;
+  top:50px;
+  right: 38px;
+  border: 2px solid white;
+  z-index: 99;
+}
+
+.notification-badge-2 {
+  background-color:rgb(109, 235, 92);
+  color: white;
+  border-radius: 50%;
+  padding: .5px 6px;
+  position: absolute;
+  top:50px;
+  right: 105px;
+  border: 2px solid white;
+  z-index: 99;
+}
+
+.notification-badge-3 {
+  background-color:red;
+  color: white;
+  border-radius: 50%;
+  padding: .1px 5px !important;
+  position: absolute;
+  top:16px;
+  right: 110px;
+  z-index: 99;
+}
+.input-group input{
+  border: 1px solid rgb(216, 216, 245);
+  outline: none;
+  height: 35px;
+  border-radius: 5px;
+  padding: 2px 10px;
+  margin: 0px 20px;
+}
+.input-group input:focus{
+  border-color: rgb(169, 169, 226);;
+}
+
+.logo-img{
+  height: 35px;
+  width: 100px;
+  margin: 0px !important;
+}
