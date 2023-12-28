@@ -97,12 +97,14 @@ img{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: none !important;
 }
 .icon-cls{
     height: 70%;
     width: 100%;
     background-color:transparent;
     border-radius: 6px;
+    box-shadow: none !important;
 }
 .icon-cls a{
     text-decoration: none;

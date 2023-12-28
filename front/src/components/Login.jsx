@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from 'axios';
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+
 const Login = () => {
 
   const validationSchema = Yup.object().shape({
