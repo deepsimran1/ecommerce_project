@@ -207,6 +207,11 @@ img{
   position: relative;
 }
 
+.border-card{
+  border: 1px solid lavender !important;
+}
+
+
 .cart-img{
   height: 230px;
   width: 180px;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -6,6 +6,12 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const ContactUs = () => {
   const navigate = useNavigate();
+  useEffect=(()=>{
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    }
+    setPageTitle('Contact Us');
+  })
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),

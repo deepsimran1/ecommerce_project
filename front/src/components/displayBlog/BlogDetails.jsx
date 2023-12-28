@@ -21,6 +21,11 @@ export default function BlogDetails() {
 
 
   useEffect(() => {
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    };
+    
+
     const fetchLoggedInUser = async() =>{
       try{
         const response = await axios.get('http://localhost:4000/users/getLoggedInUser',{
@@ -38,6 +43,7 @@ export default function BlogDetails() {
         const response = await axios.get(`http://localhost:4000/users/getBlogDetails/${blogId}`);
         console.log('API Response:', response);
         setBlogDetails(response.data);
+        setPageTitle(response.data.title);
       } catch (error) {
         console.error('Error fetching blog details', error);
       }
@@ -158,7 +164,7 @@ export default function BlogDetails() {
 <div className='overlay'></div>
     </div>
     <div className="container mt-4">
-      <div className="card blog-details-card">
+      <div className="card card-bor blog-details-card">
         <div className="card-body">
           <h2 className="card-title title">{blogDetails.title}</h2>
           <label className='pb-2 pt-1 date-blog mb-3'>

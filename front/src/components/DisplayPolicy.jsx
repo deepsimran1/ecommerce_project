@@ -5,6 +5,11 @@ export default function DisplayPolicy() {
   const [policyContent, setPolicyContent] = useState('');
 
   useEffect(() => {
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    }
+    setPageTitle('Privacy Policy');
+
     const fetchPolicy = async () => {
       try {
         const response = await axios.get("http://localhost:4000/users/getcontent?type=0");

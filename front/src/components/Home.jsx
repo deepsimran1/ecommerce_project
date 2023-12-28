@@ -59,6 +59,11 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    }
+    setPageTitle('Belle Chic');
+
     axios
       .get(
         `http://localhost:4000/users/product?search=${searchTerm}&page=${currentPage}&limit=12`

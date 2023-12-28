@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from 'axios';
-import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import Otp from "./Otp";
+
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 
 export default function Signup() {
+  
+  useEffect(()=>{
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    }
+    setPageTitle('Sign up');
+  })
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
@@ -80,6 +87,7 @@ export default function Signup() {
 
   return (
     <>
+    <title>Signup</title>
     <div className="container d-flex justify-content-center p-5">
       <div className="card p-5 shadow size-login">
       <form className="row g-3" onSubmit={formik.handleSubmit}>

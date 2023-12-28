@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from 'axios';
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,6 +6,12 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 const Login = () => {
+  useEffect(()=>{
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    }
+    setPageTitle('Login');
+  })
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
@@ -43,6 +49,7 @@ const Login = () => {
 
   return (
     <>
+    <title>Login</title>
       <div className="container d-flex justify-content-center p-5 ">
         <div className="card p-5 size-login shadow">
           <form className="row g-3" onSubmit={formik.handleSubmit}>

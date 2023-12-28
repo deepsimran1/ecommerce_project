@@ -5,6 +5,12 @@ export default function DisplayAbout() {
   const [aboutContent, setAboutContent] = useState('');
 
   useEffect(() => {
+
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    }
+    setPageTitle('About Us');
+
     const fetchAbout = async () => {
       try {
         const response = await axios.get("http://localhost:4000/users/getcontent?type=2");

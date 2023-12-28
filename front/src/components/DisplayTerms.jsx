@@ -5,6 +5,12 @@ export default function DisplayTerms() {
   const [termsContent, setTermsContent] = useState('');
 
   useEffect(() => {
+
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    }
+    setPageTitle('Terms & Conditions');
+    
     const fetchTerms = async () => {
       try {
         const response = await axios.get("http://localhost:4000/users/getcontent?type=1");

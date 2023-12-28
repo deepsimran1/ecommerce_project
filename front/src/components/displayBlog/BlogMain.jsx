@@ -6,6 +6,12 @@ export default function BlogMain() {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
+
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    }
+    setPageTitle('Blog');
+
     // Fetch blogs when the component mounts
     const fetchBlogs = async () => {
       try {
@@ -26,7 +32,7 @@ export default function BlogMain() {
         {blogs.map((blog) => (
           <div className='col-sm-6 blogs mb-3 p-3' key={blog._id}>
            <Link to={`/blogs/${blog._id}`} className='link'>
-           <div className='card  blog-div'>
+           <div className='card card-bor blog-div'>
               <div className='blog-img'>
                 <img src={`http://localhost:4000/${blog.image}`} alt={blog.title} />
               </div>

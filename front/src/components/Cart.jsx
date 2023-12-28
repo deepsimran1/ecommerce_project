@@ -117,7 +117,7 @@ const Cart = () => {
       <div className='col-lg-8'>
         {cart && cart.products && cart.products.map(item => (
           <div className="col-md-10 col-lg-12 cart-card" key={item.productId}>
-            <div className="card h-100 d-flex justify-content-center ">
+            <div className="card border-card h-100 d-flex justify-content-center ">
               <div className="col-row row g-0">
                 <div className="col-md-1 checkboxs">
                   <input
@@ -157,7 +157,7 @@ const Cart = () => {
       </div>
       <div className=" col-lg-4 p-2">
 
-      <div className='card price-list p-3'>
+      <div className='card border-card price-list p-3'>
        <div className='row'>
        <p className='price-title'>Price Details</p>
       <div className='row prow'>
