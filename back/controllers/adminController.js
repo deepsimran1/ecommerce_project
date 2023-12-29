@@ -201,8 +201,8 @@ const sendOTPToEmail = (email, otp) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user:'deepsimran189@gmail.com',
-            pass:"twan hugk ciui fghn"
+            user:'yourEmailHere',
+            pass:"AppPassword"
         }
     });
 
@@ -226,8 +226,8 @@ const sendResetEmail = (email,resetLink)=>{
     const transporter = nodemailer.createTransport({
         service:'gmail',
         auth:{
-            user:'deepsimran189@gmail.com',
-            pass:"twan hugk ciui fghn",
+            user:'yourEmailHere',
+            pass:"appPassword",
         },
     });
 
