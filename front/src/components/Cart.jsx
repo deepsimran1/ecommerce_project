@@ -12,6 +12,12 @@ const Cart = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    }
+    setPageTitle('Shopping Cart');
+
     const token = localStorage.getItem('token');
     axios.get('http://localhost:4000/users/getCart', {
       headers: {

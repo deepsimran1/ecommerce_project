@@ -40,6 +40,8 @@ export default function Home() {
   const { searchTerm } = useSearch();
 
   useEffect(() => {
+  
+
     const token = localStorage.getItem("token");
     if (token) {
       // User is logged in, fetch wishlist from the database
@@ -59,10 +61,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    function setPageTitle(pageName){
-      document.title= `${pageName}`;
-    }
-    setPageTitle('Belle Chic');
+    
 
     axios
       .get(
@@ -91,6 +90,15 @@ export default function Home() {
         setPreviousSelectedSize(storedPreviousSize);
       }
     }
+
+    
+    if (showModal && selectedProduct) {
+      document.title = `Belle Chic - ${selectedProduct?.name}`;
+    } else {
+      document.title = 'Belle Chic - Online Shopping for Women';
+    }
+    
+
   }, [searchTerm, showModal, selectedProduct, currentPage]);
 
   const handleAddToCart = async (productId, selectedSize) => {
@@ -148,6 +156,7 @@ export default function Home() {
   const handleCardClick = (product) => {
     setSelectedProduct(product);
     setShowModal(true);
+    document.title = `${product?.name} - Belle Chic`;
   };
 
   const closeModal = () => {
@@ -160,6 +169,8 @@ export default function Home() {
   const handleBackdropClick = () => {
     closeModal();
   };
+
+ 
 
   const handleAddToWishlist = async (productId) => {
     try {

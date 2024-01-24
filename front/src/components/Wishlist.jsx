@@ -13,6 +13,12 @@ const Wishlist = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+
+    // function setPageTitle(pageName){
+    //   document.title= `${pageName}`;
+    // }
+    // setPageTitle('Wishlist');
+
     const token = localStorage.getItem("token");
     axios
       .get("http://localhost:4000/users/getWishlist", {
@@ -96,6 +102,12 @@ const Wishlist = () => {
     setSizeNotSelected(false);
     setSelectedSize("");
   };
+
+  if (showModal && selectedProduct) {
+    document.title = `Wishlist- ${selectedProduct?.name} `;
+  } else {
+    document.title = 'Wishlist';
+  }
 
   const handleBackdropClick = () => {
     closeModal();

@@ -1,11 +1,17 @@
-import React, { useState, } from 'react';
+import React, { useEffect, useState, } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, } from 'react-router-dom';  // Import useParams
 import AdminNav from './AdminNav';
 import AdminSidebar from './AdminSidebar';
 
-
 const AddCustomer = () => {
+  useEffect=(()=>{
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    }
+    setPageTitle('Add Customer');
+  })
+
  const navigate = useNavigate();
   const [user, setUser] = useState({
     name: '',
@@ -17,6 +23,8 @@ const AddCustomer = () => {
     const { name, value } = e.target;
     setUser(prevProduct => ({ ...prevProduct, [name]: value }));
   };
+
+  
 
   const handleSave = () => {
     const token = localStorage.getItem('token');

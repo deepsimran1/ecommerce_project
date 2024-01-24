@@ -17,6 +17,10 @@ const AdminHome = () => {
   const navigate = useNavigate();
   
   useEffect(() => {
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    }
+    setPageTitle('Admin Home');
     const fetchAdminProfile = async () => {
       try {
         const token = localStorage.getItem("token");

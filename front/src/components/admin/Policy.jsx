@@ -11,6 +11,10 @@ const PolicyForm = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+      function setPageTitle(pageName){
+        document.title= `${pageName}`;
+      }
+      setPageTitle('Add Privacy Policy');
     const fetchPolicy = async () => {
       try {
         const response = await axios.get("http://localhost:4000/users/getcontent?type=0");

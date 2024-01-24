@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AdminNav from "./admin/AdminNav";
 import AdminSidebar from "./admin/AdminSidebar";
+
 
 export default function ProductForm() {
   const [productName, setProductName] = useState("");
@@ -12,7 +13,17 @@ export default function ProductForm() {
   const [productSizes, setProductSizes] = useState([]);
   const navigate = useNavigate();
 
+  useEffect(()=>{
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    }
+    setPageTitle('Add Product');
+  })
+
   const handleAddProduct = async (e) => {
+
+    
+
     try {
       e.preventDefault();
       const token = localStorage.getItem("token");

@@ -1,5 +1,5 @@
 // src/App.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import AdminNav from "../admin/AdminNav";
@@ -9,6 +9,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const BlogForm = () => {
+  useEffect(()=>{
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    }
+    setPageTitle('Create a Blog');
+  })
   const [title, setTitle] = useState("");
   const [blogContent, setBlogContent] = useState("");
   const [image, setImage] = useState(null);

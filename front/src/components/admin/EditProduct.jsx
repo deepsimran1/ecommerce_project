@@ -23,6 +23,8 @@ const EditProduct = () => {
     },
   });
 
+ 
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     axios.get(`http://localhost:4000/users/getProductById/${productId}`,{
@@ -30,7 +32,10 @@ const EditProduct = () => {
         Authorization:`Bearer ${token}`,
       }
     })
-      .then(response => setProduct(response.data))
+      .then(response => {
+        setProduct(response.data);
+      document.title=`Edit Product - ${response.data.name}`;
+      })
       .catch(error => console.error('Error fetching product details:', error));
   }, [productId]);
 

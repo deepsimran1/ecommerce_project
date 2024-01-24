@@ -13,6 +13,7 @@ const ContactUser = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+   
     const token = localStorage.getItem('token');
     axios
       .get('http://localhost:4000/users/getContactUsers',{
@@ -32,6 +33,14 @@ const ContactUser = () => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
+    
+  if (showModal ) {
+    
+    document.title = `Contact Users - ${selectedUser?.name.charAt(0).toUpperCase() + selectedUser.name.slice(1)} `;
+  } else {
+    document.title = 'Contact Users';
+  }
 
   const handleDeleteUser = (userId) => {
     const token = localStorage.getItem('token');
@@ -75,7 +84,7 @@ const ContactUser = () => {
                 {users.map((user, index) => (
                   <tr key={user._id}>
                     <td>{index + 1}</td>
-                    <td>{user.name}</td>
+                    <td>{user.name.charAt(0).toUpperCase() + user.name.slice(1)}</td>
                     <td>{user.email}</td>
                     
                     <td>
@@ -102,9 +111,9 @@ const ContactUser = () => {
               <Modal.Body>
                 {selectedUser && (
                   <div>
-                    <p>Name: {selectedUser.name}</p>
+                    <p>Name: {selectedUser.name.charAt(0).toUpperCase() + selectedUser.name.slice(1)}</p>
                     <p>Email: {selectedUser.email}</p>
-                    <p>Message: {selectedUser.message}</p>
+                    <p>Message: {selectedUser.message.charAt(0).toUpperCase() + selectedUser.message.slice(1)}</p>
                   </div>
                 )}
               </Modal.Body>

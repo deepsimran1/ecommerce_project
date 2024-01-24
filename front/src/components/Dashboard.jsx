@@ -21,6 +21,7 @@ export default function Dashboard() {
             const { name, email, mobile, dob, alternativeMob } = response.data;
             setUserData({ name, email });
             setEditedData({ name, email, mobile: mobile || '', dob: dob || '', alternativeMob: alternativeMob || '' });
+            setPageTitle(name);
         } else {
           console.error('Error fetching user data');
         }
@@ -30,7 +31,13 @@ export default function Dashboard() {
     }
   };
 
+  function setPageTitle(pageName){
+    document.title= `${pageName.charAt(0).toUpperCase() + pageName.slice(1)}`;
+  }
+  
+
   useEffect(() => {
+   
     fetchUserData();
   }, []);
 
@@ -116,7 +123,7 @@ export default function Dashboard() {
               <label htmlFor="email">Email*</label>
             </div>
             </div>
-            <div className='col-12 mt-3 mb-3'>//dob
+            <div className='col-12 mt-3 mb-3'>
               <div className='form-floating'>
                 <input
                   type="date"

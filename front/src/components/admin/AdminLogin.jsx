@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 const AdminLogin = () => {
+
+  useEffect=(()=>{
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    }
+    setPageTitle('Belle Chic - Admin Login');
+  })
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
     password: Yup.string().required('Password is required'),

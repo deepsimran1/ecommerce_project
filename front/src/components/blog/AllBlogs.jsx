@@ -39,6 +39,15 @@ const AllBlogs = () => {
     console.log(blog);
   };
 
+      
+  if (showModal ) {
+    
+    document.title = `All Blogs - ${selectedBlog.title} `;
+  } else {
+    document.title = 'All Blogs';
+  }
+
+
   const handleDeleteBlog = async (blogId) => {
     try {
       const response = await axios.delete(`http://localhost:4000/users/deleteBlogWithoutAdminId/${blogId}`, {

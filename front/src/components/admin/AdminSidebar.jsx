@@ -42,15 +42,13 @@ export default function AdminSidebar() {
           </li>
           <li className="mb-1">
             <button
-              className="btn btn-toggle align-items-center rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#product-collapse"
-              aria-expanded="false"
-            >
+              className="btn "
+              onClick={()=> handleToggle('product')}>
               Products
             </button>
-            <div className="collapse" id="product-collapse">
-              <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            {activeSection === "product" && (
+              <div>
+              <ul className=" list-unstyled fw-normal pb-1 small">
                 <li>
                   <Link to="/admin/products" className="link-dark rounded ms-4">
                     View Products
@@ -63,56 +61,59 @@ export default function AdminSidebar() {
                 </li>
               </ul>
             </div>
+            )}
+            
           </li>
           <li className="mb-1">
             <button
-              className="btn btn-toggle align-items-center rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#content-collapse"
-              aria-expanded="false"
+            onClick={()=>handleToggle("content")}
+              className="btn"
             >
-              Content
+                Content
             </button>
-            <div className="collapse" id="content-collapse">
-              <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li>
-                  <Link to="/admin/policy" className="link-dark rounded ms-4">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/admin/termsConditions"
-                    className="link-dark rounded ms-4"
-                  >
-                    Terms & Conditions
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/admin/aboutus" className="link-dark rounded ms-4">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/admin/contactUser" className="link-dark rounded ms-4">
-                    Contact Users
-                  </Link>
-                </li>
-                
-              </ul>
-            </div>
+              {activeSection === "content" && (
+                 <div>
+                 <ul className="list-unstyled fw-normal pb-1 small">
+                   <li>
+                     <Link to="/admin/policy" className="link-dark rounded ms-4">
+                       Privacy Policy
+                     </Link>
+                   </li>
+                   <li>
+                     <Link
+                       to="/admin/termsConditions"
+                       className="link-dark rounded ms-4"
+                     >
+                       Terms & Conditions
+                     </Link>
+                   </li>
+                   <li>
+                     <Link to="/admin/aboutus" className="link-dark rounded ms-4">
+                       About Us
+                     </Link>
+                   </li>
+                   <li>
+                     <Link to="/admin/contactUser" className="link-dark rounded ms-4">
+                       Contact Users
+                     </Link>
+                   </li>
+                   
+                 </ul>
+               </div>
+              )}
+            
+           
           </li>
           <li className="mb-1">
             <button
-              className="btn btn-toggle align-items-center rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#blog-collapse"
-              aria-expanded="false"
+            onClick={()=>handleToggle('blog')}
+              className="btn "
             >
               Blog
             </button>
-            <div className="collapse" id="blog-collapse">
-              <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            {activeSection === "blog" && (
+              <div>
+              <ul className=" list-unstyled fw-normal pb-1 small">
               <li>
                   <Link to="/admin/createBlog" className="link-dark rounded ms-4">
                     Create Blogs
@@ -128,44 +129,42 @@ export default function AdminSidebar() {
                     All Blogs
                   </Link>
                 </li>
-                <li>
-                  <Link to="/admin/editBlog" className="link-dark rounded ms-4">
-                    Edit Blog
-                  </Link>
-                </li>
               </ul>
             </div>
+            )}
+            
           </li>
           <li className="border-top my-3"></li>
           <li className="mb-1">
             <button
-              className="btn btn-toggle align-items-center rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#account-collapse"
-              aria-expanded="false"
+            onClick={()=>handleToggle('account')}
+              className="btn "
             >
               Account
             </button>
-            <div className="collapse" id="account-collapse">
-              <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li>
-                  <Link to="/admin/profile" className="link-dark rounded ms-4">
-                    Profile
-                  </Link>
-                </li>
+            {activeSection === "account" && (
+ <div>
+ <ul className=" list-unstyled fw-normal pb-1 small">
+   <li>
+     <Link to="/admin/profile" className="link-dark rounded ms-4">
+       Profile
+     </Link>
+   </li>
 
-                <li>
-                  <a className="link-dark rounded ms-4" onClick={handleSetting}>
-                    Settings
-                  </a>
-                </li>
-                <li>
-                  <a className="link-dark rounded ms-4" onClick={handleLogout}>
-                    Log out
-                  </a>
-                </li>
-              </ul>
-            </div>
+   <li>
+     <a className="link-dark rounded ms-4" onClick={handleSetting}>
+       Settings
+     </a>
+   </li>
+   <li>
+     <a className="link-dark rounded ms-4" onClick={handleLogout}>
+       Log out
+     </a>
+   </li>
+ </ul>
+</div>
+            )}
+           
           </li>
         </ul>
       </div>

@@ -11,6 +11,10 @@ const TermsForm = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+      function setPageTitle(pageName){
+        document.title= `${pageName}`;
+      }
+      setPageTitle('Add Terms & Conditions');
     const fetchTerms = async () => {
       try {
         const response = await axios.get("http://localhost:4000/users/getcontent?type=1");

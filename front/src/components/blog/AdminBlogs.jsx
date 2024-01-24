@@ -15,6 +15,7 @@ const navigate = useNavigate();
 
   const token = localStorage.getItem('token');
   useEffect(() => {
+   
     const fetchAdminBlogs = async () => {
       try {
         const response = await axios.get('http://localhost:4000/users/getAdminBlogs',{
@@ -31,6 +32,12 @@ const navigate = useNavigate();
     fetchAdminBlogs();
   }, []);
 
+  if (showModal ) {
+    
+    document.title = `Your Blogs - ${selectedBlog.title} `;
+  } else {
+    document.title = 'Your Blogs';
+  }
 
   const handleCloseModal = () => {
     setSelectedBlog(null);

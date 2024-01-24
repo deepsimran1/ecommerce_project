@@ -11,6 +11,10 @@ const AboutUsForm = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    function setPageTitle(pageName){
+      document.title= `${pageName}`;
+    }
+    setPageTitle('Add About Us');
     const fetchAboutUs = async () => {
       try {
         const response = await axios.get("http://localhost:4000/users/getcontent?type=2");

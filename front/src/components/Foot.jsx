@@ -107,7 +107,7 @@ export default function Foot() {
    </footer>
     <div className='container-fluid bg-dark text-white p-3 text-center'>
  
-   Copyright © 2023 Logo. All rights reserved.
+   Copyright © 2023 Belle Chic. All rights reserved.
    
     </div>
     </>

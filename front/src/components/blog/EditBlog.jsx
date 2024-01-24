@@ -25,6 +25,7 @@ const EditBlog = () => {
         setBlog(response.data);
         setTitle(response.data.title);
         setContent(response.data.contentText);
+        document.title=`Edit Blog - ${response.data.title}`;
       } catch (error) {
         console.error('Error fetching blog', error);
       }
@@ -63,7 +64,7 @@ const EditBlog = () => {
           <div className='card shadow p-4 col-11 me-3'>
           <h2>Edit Blog</h2>
       <label>Title:</label>
-      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className=' form-control mt-1 mb-3' />
       <CKEditor
         editor={ClassicEditor}
         data={content}

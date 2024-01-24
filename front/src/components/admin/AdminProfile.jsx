@@ -29,7 +29,10 @@ const AdminProfile = () => {
           "Content-Type": "multipart/form-data",
         },
       })
-      .then((response) => setEditedData(response.data))
+      .then((response) => {
+        setEditedData(response.data);
+        setPageTitle(response.data.name);
+      })
       .catch((error) => console.error("Error fetching admin details:", error));
     if (location.state && location.state.edit) {
       setEditMode(true);
@@ -93,6 +96,10 @@ const AdminProfile = () => {
   const handleChange = (e, field) => {
     setEditedData({ ...editedData, [field]: e.target.value });
   };
+
+  function setPageTitle(pageName){
+    document.title= `${pageName.charAt(0).toUpperCase() + pageName.slice(1)}'s Profile`;
+  }
 
   return (
     <>

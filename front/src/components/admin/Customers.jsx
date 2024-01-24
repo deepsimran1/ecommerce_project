@@ -13,6 +13,12 @@ const Customers = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+
+    // function setPageTitle(pageName){
+    //   document.title= `${pageName}`;
+    // }
+    // setPageTitle('Customers');
+
     const token = localStorage.getItem('token');
     axios
       .get('http://localhost:4000/users/getUsers',{
@@ -53,6 +59,15 @@ const Customers = () => {
       );
   };
   
+
+  
+  if (showModal ) {
+    
+    document.title = `Customers - ${selectedUser?.name.charAt(0).toUpperCase() + selectedUser.name.slice(1)} `;
+  } else {
+    document.title = 'Customers';
+  }
+
   return (
     <>
       <div className='bg-light'>
@@ -75,7 +90,7 @@ const Customers = () => {
                 {users.map((user, index) => (
                   <tr key={user._id}>
                     <td>{index + 1}</td>
-                    <td>{user.name}</td>
+                    <td>{user.name.charAt(0).toUpperCase()+user.name.slice(1)}</td>
                     <td>{user.email}</td>
                     <td>{user.verified ? 'Yes' : 'No'}</td>
                     <td>
@@ -107,7 +122,7 @@ const Customers = () => {
               <Modal.Body>
                 {selectedUser && (
                   <div>
-                    <p>Name: {selectedUser.name}</p>
+                    <p>Name: {selectedUser.name.charAt(0).toUpperCase() + selectedUser.name.slice(1)}</p>
                     {selectedUser.mobile && <p>Mobile: {selectedUser.mobile}</p>}
                     <p>Email: {selectedUser.email}</p>
                     {selectedUser.dob && <p>DOB: {selectedUser.dob}</p>}

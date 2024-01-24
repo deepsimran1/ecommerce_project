@@ -32,6 +32,13 @@ const AdminProducts = () => {
     setShowModal(false);
   };
 
+  if (showModal ) {
+    
+    document.title = `Products List - ${selectedProduct?.name} `;
+  } else {
+    document.title = 'Products List';
+  }
+
   const handleDeleteProduct = (productId) => {
     const token = localStorage.getItem("token");
     axios
