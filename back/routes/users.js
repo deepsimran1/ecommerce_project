@@ -44,6 +44,7 @@ router.post('/addToCart', token.verify, cartController.addToCart);
 router.get('/getCart', token.verify, cartController.getCart);
 router.delete('/deleteFromCart/:productId', token.verify, cartController.deleteFromCart);
 router.put('/updateCartItem/:productId', token.verify, cartController.updateCartItemQuantity);
+router.post('/placeOrder', token.verify, cartController.placeOrder);
 //admin routes
 router.post('/adminSignup',upload.single('image'),adminController.adminSignup);
 router.post('/admin', adminController.adminLogin);

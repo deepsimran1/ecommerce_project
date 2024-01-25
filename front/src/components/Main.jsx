@@ -16,6 +16,8 @@ import DisplayTerms from './DisplayTerms'
 import DisplayAbout from './DisplayAbout'
 import BlogMain from './displayBlog/BlogMain'
 import BlogDetails from './displayBlog/BlogDetails'
+import Success from './Success'
+import Cancel from './Cancel'
 
 export default function Main() {
 
@@ -39,8 +41,11 @@ export default function Main() {
         <Route path='/aboutUs' element={<DisplayAbout/>}/>
         <Route path='/blogs' element={<BlogMain/>}/>
         <Route path='/blogs/:blogId' element={<BlogDetails/>}/>
+<Route path ='/success' element ={<Success/>}/>
+<Route path ='/cancel' element ={<Cancel/>}/>
 
       </Routes>
+
 
     </div>
   )

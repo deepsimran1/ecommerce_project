@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {loadStripe} from '@stripe/stripe-js';
+const stripePromise = loadStripe('pk_test_51Oc02xSDwcJh6YzVezqIxo8xLJuJNnGe8hN9GYogVrzb9qHsAC7kAzMgoTZcSjplfGomSJWKvLGY3asfzN97W7wj00JAjXDUPq');
 
 const Cart = () => {
   const [cart, setCart] = useState({ products: [] });
@@ -116,6 +118,32 @@ const Cart = () => {
     setShowModal(false);
   };
 
+  const handlePlaceOrder = async()=>{
+    try{
+      const token = localStorage.getItem('token');
+      const response = await axios.post('http://localhost:4000/users/placeOrder',{},{
+        headers:{
+          Authorization:`Bearer ${token}`,
+        },
+      });
+
+      if(response.status === 200){
+        const sessionId = response.data.sessionId;
+        const stripe = await stripePromise;
+        const {error} = await stripe.redirectToCheckout({
+          sessionId,
+        });
+        if(error){
+          console.error("Error redirecting to Checkout",error);
+        }
+      }else{
+        alert("Error placing order");
+      }
+    }catch(error){
+      console.log('error placing order', error);
+    }
+  };
+
   return (
    <div className='container'>
      <div className="mt-5  row">
@@ -141,7 +169,7 @@ const Cart = () => {
                 <div className=" col-txt col-md-6 cd-by col-sm-6">
                   <div className="card-body">
                     <h5 className="card-title">{item.name}</h5>
-                    <p className="card-text">${item.price}</p>
+                    <p className="card-text"> $ {item.price}</p>
                     <p className="card-text">Size: {item.size}</p>
                     <div className="d-flex quantity-btn">
                     <button className="btn  ms-2" onClick={() => handleQuantityChange(item.productId, item.quantity - 1)}
@@ -168,11 +196,11 @@ const Cart = () => {
        <p className='price-title'>Price Details</p>
       <div className='row prow'>
       <div className='col-6'><span>Total Price:</span></div>
-       <div className='col-6 text-end'><span>${totalPrice}</span></div>
+       <div className='col-6 text-end'><span> $ {totalPrice}</span></div>
       </div>
       <div className='row prow'>
       <div className='col-6'><span>Discount:</span><span className='readm' onClick={handleReadMoreClick}>&nbsp;Know More</span></div>
-       <div className='col-6 text-end text-success'><span>- ${discount}</span></div>
+       <div className='col-6 text-end text-success'><span>-  ${discount}</span></div>
       </div>
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
@@ -190,10 +218,10 @@ const Cart = () => {
       </Modal>
       <div className='row prow'>
       <div className='col-6'><span>Final Price:</span></div>
-       <div className='col-6 text-end'><span>${finalPrice}</span></div>
+       <div className='col-6 text-end'><span> $ {finalPrice}</span></div>
       </div>
       <div className='row btn-color'>
-        <button className='btn m-2 mt-3'> Place Order</button>
+        <button className='btn m-2 mt-3' onClick={handlePlaceOrder}> Place Order</button>
          </div>
        </div>
 
