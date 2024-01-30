@@ -1,6 +1,9 @@
 const Cart = require('../models/cart');
 const Product = require('../models/product');
 const stripe = require('stripe')('sk_test_51Oc02xSDwcJh6YzVfO8rk0FGvHKP98M555KGLXYqbZk8DidHc6zQp7EGtn0XPm1ywjIldeq5xdaZgWGiyP0491Ke00nHVMf3Wi');
+const nodemailer = require('nodemailer');
+const path = require('path');
+const ejs = require('ejs');
 
 const cartController = {
 
@@ -129,6 +132,7 @@ const cartController = {
     placeOrder: async (req, res) => {
         try {
             const userId = req.decoded._id;
+            const userEmail = req.decoded.email;
             const cart = await Cart.findOne({ user: userId });
 
             const lineItems = cart.products.map(product => {
@@ -150,16 +154,47 @@ const cartController = {
                 payment_method_types: ['card'],
                 line_items: lineItems,
                 mode: 'payment',
-                success_url: 'http://localhost:4000/success',
-                cancel_url: 'http://localhost:4000/cancel',
+                success_url: 'http://localhost:3000/success',
+                cancel_url: 'http://localhost:3000/cancel',
                 
             });
+
+            sendConfirmationEmail(userEmail);
+
             res.status(200).json({sessionId: session.id});
         }catch(error){
             console.error('Error creating Stripe Checkout session:', error);
             res.status(500).json({message:"Error creating Stripe Checkout session", error:error.message});
         }
     }
+};
+
+const sendConfirmationEmail = async(userEmail) =>{
+    const transporter = nodemailer.createTransport({
+        service : 'gmail',
+        auth :{
+            user: 'deepsimran189@gmail.com',
+            pass: 'twan hugk ciui fghn',
+        },
+    });
+
+    const templatePath = path.join(__dirname, 'template', 'orderConfirmation.ejs');
+  const template = await ejs.renderFile(templatePath);
+
+
+    const mailOptions ={
+        from:'process.env.USER',
+        to: userEmail,
+        subject : 'Order Confirmation',
+        html: template,
+    };
+    transporter.sendMail(mailOptions, (error, info)=>{
+        if(error){
+            console.error('Error sending email', error);
+        }else{
+            console.log('Email sent:',info.response);
+        }
+    });
 };
 
 module.exports = cartController;
